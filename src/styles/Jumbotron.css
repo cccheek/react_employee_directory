@@ -1,0 +1,9 @@
+.jumbotron h1{
+    text-align:center
+}
+.jumbotron p{
+    text-align:center
+}
+.jumbotron{
+    background-color: lightpink;
+}
