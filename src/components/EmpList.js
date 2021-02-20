@@ -62,17 +62,7 @@ class EmpList extends Component {
                     <tbody>
                         {/* {this.state.results.map((employee, index) => <EmpListEl firstName={employee.name.first} lastName={employee.name.last} city={employee.location.city} state={employee.location.state} email={employee.email} cell={employee.cell} dob={employee.dob} picURL={employee.picture.thumbnail} key={index} />)} */}
                         {this.state.results.map(employee => {
-                            return
-                            <tr key={employee.id}>
-                                <th scope="row"></th>
-                                <td>{`${employee.name.first}`}</td>
-                                <td>{`${employee.name.last}`}</td>
-                                <td>{`${employee.city}, ${employee.state}`}</td>
-                                <td>{employee.email}</td>
-                                <td>{employee.cell}</td>
-                                <td>{employee.dob}</td>
-                                <td><img alt="thumbnail" src={employee.picURL} /></td>
-                            </tr>
+                            return <EmpListEl firstName={employee.name.first} lastName={employee.name.last} city={employee.location.city} state={employee.location.state} email={employee.email} cell={employee.cell} dob={employee.dob} picURL={employee.picture.thumbnail} />
                         })}
                     </tbody>
 
