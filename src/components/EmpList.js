@@ -16,11 +16,24 @@ class EmpList extends Component {
 
     searchEmp = (search) => {
         API.search().then(data => {
-            console.log(search)
-            console.log(data.data.results)
+            // console.log(search)
+            // console.log(data.data.results)
             this.setState({ results: data.data.results })
         }).catch(err => console.log(err))
     }
+
+    filterEmp = () => {
+        const result = this.state.results.filter(result =>
+            result.name.first.toLowerCase() === this.state.search.toLowerCase() || result.name.last.toLowerCase() === this.state.search.toLowerCase())
+        this.setState({
+            results: result
+        })
+
+
+        if (this.state.search === "") {
+            this.searchEmp()
+        }
+    };
 
     handleInputChange = event => {
         const name = event.target.name;
