@@ -14,19 +14,18 @@ class EmpList extends Component {
         this.searchEmp()
     }
 
-    searchEmp = () => {
+    searchEmp = (search) => {
         API.search().then(data => {
-            // console.log(data.data.results)
+            console.log(search)
+            console.log(data.data.results)
             this.setState({ results: data.data.results })
-        })
-        // API.search()
-        //     .then(res => this.setState({ results: res.data.results }))
-        //     .catch(err => console.log(err))
+        }).catch(err => console.log(err))
     }
 
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
+        // console.log(value)
         this.setState({
             [name]: value
         })
@@ -60,9 +59,10 @@ class EmpList extends Component {
 
 
                     <tbody>
-                        {/* {this.state.results.map((employee, index) => <EmpListEl firstName={employee.name.first} lastName={employee.name.last} city={employee.location.city} state={employee.location.state} email={employee.email} cell={employee.cell} dob={employee.dob} picURL={employee.picture.thumbnail} key={index} />)} */}
-                        {this.state.results.map(employee => {
-                            return <EmpListEl firstName={employee.name.first} lastName={employee.name.last} city={employee.location.city} state={employee.location.state} email={employee.email} cell={employee.cell} dob={employee.dob} picURL={employee.picture.thumbnail} />
+
+                        {this.state.results.map((employee, index) => {
+                            return <EmpListEl key={index} firstName={employee.name.first} lastName={employee.name.last} city={employee.location.city} state={employee.location.state} email={employee.email} cell={employee.cell}
+                                dob={employee.dob.date} picURL={employee.picture.thumbnail} />
                         })}
                     </tbody>
 
@@ -76,3 +76,4 @@ class EmpList extends Component {
 export default EmpList;
 
 
+//

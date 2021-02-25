@@ -1,4 +1,5 @@
 import React from 'react'
+import Moment from 'react-moment'
 
 function EmpListEl(props) {
 
@@ -10,7 +11,9 @@ function EmpListEl(props) {
             <td>{`${props.city}, ${props.state}`}</td>
             <td>{props.email}</td>
             <td>{props.cell}</td>
-            <td>{props.dob}</td>
+            <td>
+                <Moment format="D MM YYYY">{props.dob.date}</Moment>
+            </td>
             <td><img alt="thumbnail" src={props.picURL} /></td>
         </tr>
     )
